@@ -134,7 +134,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Password Manager Settings
-PASSWORD_ENCRYPTION_KEY = 'your-secret-encryption-key-change-in-production'
+PASSWORD_ENCRYPTION_KEY = env('PASSWORD_ENCRYPTION_KEY')
 
 # Login settings
 LOGIN_URL = '/login/'
@@ -145,3 +145,7 @@ LOGOUT_REDIRECT_URL = '/login/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Directory where `manage.py collectstatic` will copy static files for production
+# Use a different folder than the source `static/` directory to avoid conflicts.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
