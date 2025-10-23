@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Template</title>
+</head>
+<body>
+    <h1>Debug Template Output</h1>
+    
+    <h2>Apps Data:</h2>
+    <pre>{{ apps|pprint }}</pre>
+    
+    <h2>Raw Field Data:</h2>
+    {% for app_name, passwords in apps.items %}
+        <h3>App: {{ app_name }}</h3>
+        {% for password in passwords %}
+            <h4>Password ID: {{ password.id }}</h4>
+            <p>Username: {{ password.username }}</p>
+            <p>Password: {{ password.password }}</p>
+            
+            <h5>Additional Fields:</h5>
+            {% for field in password.additional_fields %}
+                <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                    <p><strong>Field Name:</strong> "{{ field.field_name }}"</p>
+                    <p><strong>Field Value:</strong> "{{ field.field_value }}"</p>
+                    <p><strong>Field Name Type:</strong> {{ field.field_name|length }} chars</p>
+                    <p><strong>Field Value Type:</strong> {{ field.field_value|length }} chars</p>
+                </div>
+            {% empty %}
+                <p>No additional fields</p>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

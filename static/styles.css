@@ -1,0 +1,320 @@
+/* Modern Password Manager Styles - Elegant Color Scheme */
+
+:root {
+    --primary-color: #6366f1;      /* Modern indigo */
+    --primary-dark: #4f46e5;       /* Darker indigo */
+    --secondary-color: #f3f4f6;     /* Light gray */
+    --accent-color: #10b981;        /* Emerald green */
+    --danger-color: #ef4444;        /* Modern red */
+    --warning-color: #f59e0b;       /* Amber */
+    --text-primary: #1f2937;        /* Dark gray */
+    --text-secondary: #6b7280;      /* Medium gray */
+    --background: #f9fafb;          /* Very light gray */
+    --card-bg: #ffffff;             /* Pure white */
+    --border-color: #e5e7eb;        /* Light border */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-field input {
+    padding-right: 45px;
+    background-color: var(--card-bg) !important;
+    border: 2px solid var(--border-color);
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease;
+}
+
+.password-field input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.password-field input:read-only {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 4px 8px;
+    font-size: 0.875rem;
+    z-index: 2;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.password-toggle:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Fix for additional field toggle buttons */
+.additional-field .password-toggle.btn {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    padding: 4px 8px !important;
+}
+
+.additional-field .password-toggle.btn:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border: none !important;
+}
+
+.app-card {
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--primary-color);
+}
+
+.app-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+.app-header > * {
+    position: relative;
+    z-index: 1;
+}
+
+.password-entry {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.4s ease forwards;
+}
+
+.password-entry:hover {
+    background-color: var(--secondary-color);
+}
+
+.password-entry:last-child {
+    border-bottom: none;
+    border-radius: 0 0 16px 16px;
+}
+
+.additional-field {
+    background: linear-gradient(145deg, var(--card-bg), var(--secondary-color));
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);
+    transition: all 0.3s ease;
+}
+
+.additional-field:hover {
+    border-left-color: var(--primary-color);
+    transform: translateX(4px);
+    background: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.15);
+}
+
+.copy-success {
+    animation: flash-success 0.6s ease-in-out;
+}
+
+@keyframes flash-success {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(16, 185, 129, 0.1); border-color: var(--accent-color); }
+    100% { background-color: transparent; }
+}
+
+/* Enhanced button styles */
+.btn-group-vertical .btn {
+    margin-bottom: 6px;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.btn-group-vertical .btn:last-child {
+    margin-bottom: 0;
+}
+
+.btn-outline-success {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-danger {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+/* Card enhancements for forms */
+.card {
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    background-color: var(--card-bg);
+}
+
+.card-header {
+    border-radius: 16px 16px 0 0 !important;
+    border-bottom: none;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+.card-body {
+    padding: 32px;
+}
+
+/* Form enhancements */
+.form-control {
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    background-color: var(--card-bg);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+/* Navbar enhancements */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+/* Toast notification styling */
+.toast {
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modern theme overrides */
+@media (prefers-color-scheme: dark) {
+    .app-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    }
+    
+    .password-entry:hover {
+        background-color: var(--secondary-color);
+    }
+    
+    .additional-field {
+        background: var(--card-bg);
+        border-left-color: var(--accent-color);
+        color: var(--text-primary);
+    }
+    
+    .form-control {
+        background-color: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    .card {
+        background-color: var(--card-bg);
+        color: var(--text-primary);
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 15px;
+    }
+    
+    .password-entry {
+        padding: 15px;
+    }
+    
+    .btn-group-vertical {
+        width: 100%;
+    }
+    
+    .password-field {
+        margin-bottom: 10px;
+    }
+    
+    .additional-field {
+        margin: 10px 0;
+    }
+}

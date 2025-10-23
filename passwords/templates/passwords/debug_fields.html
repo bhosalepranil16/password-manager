@@ -1,0 +1,48 @@
+{% extends 'passwords/base.html' %}
+
+{% block title %}Debug Additional Fields{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Debug Additional Fields Data</h2>
+    
+    {% if apps %}
+        {% for app_name, passwords in apps.items %}
+            <div class="mb-4">
+                <h3>App: {{ app_name }}</h3>
+                {% for password in passwords %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Password ID: {{ password.id }}</h5>
+                            <p><strong>Username:</strong> {{ password.username }}</p>
+                            <p><strong>Password:</strong> {{ password.password }}</p>
+                            
+                            <h6>Additional Fields Debug:</h6>
+                            <p><strong>Fields Count:</strong> {{ password.additional_fields|length }}</p>
+                            
+                            {% if password.additional_fields %}
+                                <ul>
+                                    {% for field in password.additional_fields %}
+                                        <li>
+                                            <strong>Field Name:</strong> "{{ field.field_name }}"<br>
+                                            <strong>Field Value:</strong> "{{ field.field_value }}"<br>
+                                            <strong>Field Name Type:</strong> {{ field.field_name|class_name }}<br>
+                                            <strong>Field Value Type:</strong> {{ field.field_value|class_name }}<br>
+                                            <strong>Generated ID:</strong> field-{{ password.id }}-{{ field.field_name|slugify }}<br>
+                                            <hr>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No additional fields found.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No apps found.</p>
+    {% endif %}
+</div>
+{% endblock %}
